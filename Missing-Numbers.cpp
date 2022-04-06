@@ -16,7 +16,8 @@ vector<string> split(const string &);
  */
 
 vector<int> missingNumbers(vector<int> arr, vector<int> brr) {
-
+    std::vector<int> result;
+    return result;
 }
 
 int main()
