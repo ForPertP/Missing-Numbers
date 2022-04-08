@@ -15,8 +15,29 @@ vector<string> split(const string &);
  *  2. INTEGER_ARRAY brr
  */
 
-vector<int> missingNumbers(vector<int> arr, vector<int> brr) {
+vector<int> missingNumbers(vector<int> arr, vector<int> brr)
+{
+    std::map<int,int> mp;
     std::vector<int> result;
+    
+    for (int i = 0; i < brr.size(); ++i)
+    {
+        mp[brr[i]]++;
+    } 
+
+    for (int i = 0; i < arr.size(); ++i)
+    {
+        mp[arr[i]]--;
+        
+        if (mp[arr[i]] == 0)
+            mp.erase(arr[i]);
+    }
+    
+    for (const auto & it : mp)
+    {
+        result.emplace_back(it.first);
+    }
+
     return result;
 }
 
@@ -115,4 +136,3 @@ vector<string> split(const string &str) {
 
     return tokens;
 }
-
