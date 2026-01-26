@@ -37,7 +37,7 @@ vector<int> missingNumbers(vector<int> arr, vector<int> brr)
 }
 
 
-vector<int> missingNumbers(vector<int> arr, vector<int> brr)
+vector<int> missingNumbers2(vector<int> arr, vector<int> brr)
 {
     std::map<int,int> mp;
     std::vector<int> result;
