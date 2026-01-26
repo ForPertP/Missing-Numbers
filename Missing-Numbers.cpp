@@ -15,6 +15,28 @@ vector<string> split(const string &);
  *  2. INTEGER_ARRAY brr
  */
 
+
+vector<int> missingNumbers(vector<int> arr, vector<int> brr)
+{
+    map<int, int> mp;
+    vector<int> result;
+
+    for (int x : brr)
+        mp[x]++;
+
+    for (int x : arr)
+    {
+        if (--mp[x] == 0)
+            mp.erase(x);
+    }
+
+    for (const auto& it : mp)
+        result.push_back(it.first);
+
+    return result;
+}
+
+
 vector<int> missingNumbers(vector<int> arr, vector<int> brr)
 {
     std::map<int,int> mp;
