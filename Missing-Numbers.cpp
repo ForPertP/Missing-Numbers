@@ -15,7 +15,6 @@ vector<string> split(const string &);
  *  2. INTEGER_ARRAY brr
  */
 
-
 vector<int> missingNumbers(vector<int> arr, vector<int> brr)
 {
     map<int, int> mp;
@@ -121,8 +120,6 @@ int main()
     return 0;
 }
 
-
-
 string ltrim(const string &str)
 {
     string s(str);
@@ -132,15 +129,12 @@ string ltrim(const string &str)
     return s;
 }
 
-
-string rtrim(const string &str) {
+string rtrim(const string &str)
+{
     string s(str);
-
     s.erase(
-        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
-        s.end()
+        find_if(s.rbegin(), s.rend(), [](unsigned char ch) { return !isspace(ch); }).base(), s.end()
     );
-
     return s;
 }
 
@@ -164,24 +158,6 @@ std::vector<string> split(const string &str)
     {
         tokens.emplace_back(str_view.substr(start));
     }
-
-    return tokens;
-}
-
-
-vector<string> split(const string &str) {
-    vector<string> tokens;
-
-    string::size_type start = 0;
-    string::size_type end = 0;
-
-    while ((end = str.find(" ", start)) != string::npos) {
-        tokens.push_back(str.substr(start, end - start));
-
-        start = end + 1;
-    }
-
-    tokens.push_back(str.substr(start));
 
     return tokens;
 }
