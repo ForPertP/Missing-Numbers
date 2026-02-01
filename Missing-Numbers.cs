@@ -26,11 +26,34 @@ class Result
 
     public static List<int> missingNumbers(List<int> arr, List<int> brr)
     {
+        SortedDictionary<int, int> mp = new SortedDictionary<int, int>();
+        List<int> result = new List<int>();
 
+        foreach (int x in brr)
+        {
+            if (mp.TryGetValue(x, out int count))
+                mp[x] = count + 1;
+            else
+                mp[x] = 1;
+        }
+
+        foreach (int x in arr)
+        {
+            if (mp.TryGetValue(x, out int count))
+            {
+                if (--count == 0)
+                    mp.Remove(x);
+                else
+                    mp[x] = count;
+            }
+        }
+
+        foreach (var it in mp)
+            result.Add(it.Key);
+
+        return result;
     }
-
 }
-
 
 
 class Solution
