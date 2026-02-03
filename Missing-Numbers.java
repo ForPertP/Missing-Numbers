@@ -23,6 +23,8 @@ class Result {
 
     public static List<Integer> missingNumbers(List<Integer> arr, List<Integer> brr) {
     // Write your code here
+        TreeMap<Integer, Integer> mp = new TreeMap<>();
+        List<Integer> result = new ArrayList<>();
 
     }
 
