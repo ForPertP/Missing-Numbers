@@ -22,12 +22,27 @@ class Result {
      */
 
     public static List<Integer> missingNumbers(List<Integer> arr, List<Integer> brr) {
-    // Write your code here
         TreeMap<Integer, Integer> mp = new TreeMap<>();
         List<Integer> result = new ArrayList<>();
 
-    }
+        for (int x : brr) {
+            mp.put(x, mp.getOrDefault(x, 0) + 1);
+        }
 
+        for (int x : arr) {
+            int count = mp.get(x) - 1;
+            if (count == 0)
+                mp.remove(x);
+            else
+                mp.put(x, count);
+        }
+
+        for (Map.Entry<Integer, Integer> it : mp.entrySet()) {
+            result.add(it.getKey());
+        }
+
+        return result;
+    }
 }
 
 
